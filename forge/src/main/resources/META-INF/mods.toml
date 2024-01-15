@@ -9,7 +9,11 @@ modId = "genflower"
 version = "${version}"
 displayName = "Genflower"
 
+updateJSONURL = "https://api.modrinth.com/updates/${modrinthId}/forge_updates.json"
+
 logoFile = "assets/genflower/pack.png"
+logoBlur = false
+
 displayURL = "https://mod.ampflower.gay/genflower"
 
 description = '''

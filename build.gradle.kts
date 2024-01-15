@@ -5,7 +5,7 @@ plugins {
 }
 
 val github: String by project
-
+val modrinthId: String by project
 
 allprojects {
 	apply(plugin = "java")
@@ -61,6 +61,7 @@ allprojects {
 					"issues" to "$github/issues",
 					"description" to project.description,
 					"projectVersion" to meta.projectVersion,
+					"modrinthId" to modrinthId,
 					"forgeRequired" to libs.versions.forge.loader.get().let {
 						val s = it.indexOf('-') + 1
 						it.substring(s, it.indexOf('.', s))
