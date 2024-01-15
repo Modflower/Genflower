@@ -1,0 +1,14 @@
+name: Publish
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  build:
+    uses: Modflower/.github/workflows/mod-publish.yml@main
+    with:
+      artifacts: |
+        '*/build/libs/'
+    secrets: inherit
