@@ -5,10 +5,17 @@ on:
     types:
       - published
 
+permissions:
+  contents: write
+
 jobs:
   build:
-    uses: Modflower/.github/workflows/mod-publish.yml@main
+    uses: Modflower/workflows/.github/workflows/mod-publish.yml@main
     with:
       artifacts: |
-        '*/build/libs/'
+        */build/libs/*
+        !buildSrc/*
+        !xplat/*
+        !*-sources.jar
+        !*-javadoc.jar
     secrets: inherit

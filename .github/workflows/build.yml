@@ -11,7 +11,8 @@ on:
 
 jobs:
   build:
-    uses: Modflower/.github/workflows/mod-build.yml@main
+    uses: Modflower/workflows/.github/workflows/mod-build.yml@main
     with:
       artifacts: |
-        '*/build/libs/'
+        */build/libs/
+        !buildSrc
