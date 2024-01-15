@@ -1,0 +1,27 @@
+modLoader = "javafml"
+loaderVersion = "[${forgeRequired},)"
+license = "Apache-2.0"
+
+issueTrackerURL = "${issues}"
+
+[[mods]]
+modId = "genflower"
+version = "${version}"
+displayName = "Genflower"
+
+logoFile = "assets/genflower/pack.png"
+displayURL = "https://mod.ampflower.gay/genflower"
+
+description = '''
+${description}
+'''
+
+authors = "Ampflower"
+
+[[dependencies.genflower]]
+modId = "minecraft"
+mandatory = true
+
+versionRange = "[${minecraftRequired},)"
+ordering = "NONE"
+side = "BOTH"

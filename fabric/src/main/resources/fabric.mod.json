@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "genflower",
+	"version": "${version}",
+	"name": "Genflower",
+	"description": "${description}",
+	"authors": [
+		"Ampflower"
+	],
+	"contact": {
+		"homepage": "https://mod.ampflower.gay/Genflower",
+		"sources": "${sources}",
+		"issues": "${issues}",
+		"discord": "https://discord.gg/EmPS9y9"
+	},
+	"license": "MIT",
+	"icon": "assets/genflower/pack.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"gay.ampflower.mod.gen.fabric.Main"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.7.2",
+		"minecraft": "${minecraftRequired}"
+	},
+	"custom": {
+		"modmenu": {
+			"links": {
+				"modmenu.discord": "https://discord.gg/EmPS9y9"
+			},
+			"badges": [
+				"library"
+			]
+		}
+	}
+}

@@ -1,0 +1,45 @@
+[versions]
+# Minecraft
+minecraft-version = "1.20.1"
+minecraft-required = ">=1.20"
+
+yarn = "1.20.1+build.10"
+
+# Fabric
+fabric-loader = "0.15.+"
+fabric-api = "0.91.0+1.20.1"
+
+# Forge
+forge-loader = "1.20.1-47.2.0"
+
+# Libraries
+annotations = "23.+"
+
+testng = "7.5.1"
+
+# Plugins
+loom = "1.+"
+minotaur = "2.+"
+
+[libraries]
+minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft-version" }
+yarn = { module = "net.fabricmc:yarn", version.ref = "yarn" }
+
+fabric-loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric-loader" }
+fabric-api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric-api" }
+
+forge-loader = { module = "net.minecraftforge:forge", version.ref = "forge-loader" }
+
+annotations = { module = "org.jetbrains:annotations", version.ref = "annotations" }
+
+testng = { module = "org.testng:testng", version.ref = "testng" }
+
+[bundles]
+fabric = ["fabric-loader", "fabric-api"]
+forge = ["forge-loader"]
+
+compile-only = ["annotations"]
+
+[plugins]
+loom = { id = "dev.architectury.loom", version.ref = "loom" }
+minotaur = { id = "com.modrinth.minotaur", version.ref = "minotaur" }
