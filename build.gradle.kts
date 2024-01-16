@@ -1,6 +1,7 @@
 plugins {
 	java
 	alias(libs.plugins.loom)
+	alias(libs.plugins.minotaur)
 	id("gay.ampflower.BuildPlugin")
 }
 
@@ -10,6 +11,7 @@ val modrinthId: String by project
 allprojects {
 	apply(plugin = "java")
 	apply(plugin = "gay.ampflower.BuildPlugin")
+	apply(plugin = rootProject.libs.plugins.minotaur.get().pluginId)
 	apply(plugin = rootProject.libs.plugins.loom.get().pluginId)
 
 	version = meta.globalVersion

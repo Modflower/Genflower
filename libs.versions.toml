@@ -2,6 +2,8 @@
 # Minecraft
 minecraft-version = "1.20.1"
 minecraft-required = ">=1.20"
+minecraft-forge-compatible = "1.20,1.20.1"
+minecraft-fabric-compatible = "1.20,1.20.1"
 
 yarn = "1.20.1+build.10"
 

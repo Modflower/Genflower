@@ -16,6 +16,7 @@ public final class Env {
 	public static final @Nullable String RunNumber = env("GITHUB_RUN_NUMBER");
 	public static final @Nullable String Reference = env("GITHUB_REF");
 	public static final @Nullable String Changelog = env("CHANGELOG");
+	public static final @Nullable String ReleaseOverride = env("RELEASE_OVERRIDE");
 
 	private Env() {}
 

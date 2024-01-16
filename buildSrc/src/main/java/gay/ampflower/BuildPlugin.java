@@ -7,9 +7,12 @@ import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 import org.gradle.api.artifacts.MinimalExternalModuleDependency;
 import org.gradle.api.artifacts.VersionCatalogsExtension;
+import org.gradle.api.artifacts.VersionConstraint;
 import org.gradle.api.internal.catalog.AbstractExternalDependencyFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 /**
  * @author Ampflower
@@ -41,7 +44,11 @@ public class BuildPlugin implements Plugin<Project> {
 		extensions.add("meta", new Meta(
 			version,
 			Util.mkVersion(version + "+mc." + minecraftVersion),
-			Util.mkChangelog(Properties.str(target, "github"))
+			Util.getVersionType(version),
+			Util.mkChangelog(Properties.str(target, "github")),
+			Util.getCompatibleVersions(libs, target)
 		));
+
+		logger.info("Got {}", extensions.findByName("meta"));
 	}
 }

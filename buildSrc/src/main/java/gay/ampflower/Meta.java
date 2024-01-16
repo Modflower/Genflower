@@ -1,5 +1,7 @@
 package gay.ampflower;
 
+import java.util.List;
+
 /**
  * @author Ampflower
  * @since 0.0.0
@@ -7,6 +9,8 @@ package gay.ampflower;
 public record Meta(
 	String projectVersion,
 	String globalVersion,
-	String changelog
+	String releaseType,
+	String changelog,
+	List<String> minecraftCompatible
 ) {
 }
