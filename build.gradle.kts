@@ -80,5 +80,6 @@ allprojects {
 		javadoc {
 			(options as StandardJavadocDocletOptions).tags("reason:a:Reason")
 		}
+		create("publish")
 	}
 }

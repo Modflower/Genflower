@@ -18,4 +18,5 @@ jobs:
         !xplat/*
         !*-sources.jar
         !*-javadoc.jar
+      gradle-publish: 'publish'
     secrets: inherit

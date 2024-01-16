@@ -21,6 +21,9 @@ tasks {
 	processResources {
 		from(xplatMain.resources)
 	}
+	publish {
+		dependsOn(modrinth)
+	}
 }
 
 modrinth {
