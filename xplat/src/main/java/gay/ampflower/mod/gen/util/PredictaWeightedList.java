@@ -138,14 +138,14 @@ public class PredictaWeightedList<T> implements Iterable<T> {
 	// Codecs nonsense below
 
 	/**
-	 * Creates a hybrid simple map & list codec
+	 * Creates a hybrid simple map &amp; list codec
 	 */
 	public static <C> Codec<PredictaWeightedList<C>> createCodec(Codec<C> codec, Keyable keyable) {
 		return Codecs.xor(createMapCodec(codec, keyable).codec(), createListCodec(codec)).xmap(Util::unbox, Either::left);
 	}
 
 	/**
-	 * Creates a hybrid unbounded map & list codec
+	 * Creates a hybrid unbounded map &amp; list codec
 	 */
 	public static <C> Codec<PredictaWeightedList<C>> createCodec(Codec<C> codec) {
 		return Codecs.xor(createMapCodec(codec), createListCodec(codec)).xmap(Util::unbox, Either::left);
