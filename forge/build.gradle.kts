@@ -25,7 +25,7 @@ modrinth {
 	projectId.set(modrinthId)
 	versionType.set(meta.releaseType)
 	versionName.set("${meta.projectVersion} - Forge ${libs.versions.minecraft.version.get()}")
-	versionNumber.set("${project.version}-Forge")
+	versionNumber.set("${project.version}-forge")
 	changelog.set(meta.changelog)
 	uploadFile.set(tasks.remapJar)
 	gameVersions.set(meta.minecraftCompatible)
