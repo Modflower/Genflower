@@ -38,20 +38,23 @@ public class LootStructureProcessor extends StructureProcessor {
 		instance -> instance.group(
 			RegistryCodecs.entryList(RegistryKeys.BLOCK).fieldOf("blocks").forGetter(processor -> processor.blocks),
 			Identifier.CODEC.fieldOf("loot_table").forGetter(processor -> processor.lootTable),
-			Codec.INT.fieldOf("slots").forGetter(processor -> processor.slots)
+			Codec.INT.fieldOf("slots").forGetter(processor -> processor.slots),
+			Codec.floatRange(0, 1).optionalFieldOf("probability", 1.F).forGetter(processor -> processor.probability)
 		).apply(instance, LootStructureProcessor::new)
 	);
 
 	private final RegistryEntryList<Block> blocks;
 	private final Identifier lootTable;
 	private final int slots;
+	private final float probability;
 
 	private transient final BooleanProperty[][] properties;
 
-	private LootStructureProcessor(RegistryEntryList<Block> blocks, Identifier lootTable, int slots) {
+	private LootStructureProcessor(RegistryEntryList<Block> blocks, Identifier lootTable, int slots, float probability) {
 		this.blocks = blocks;
 		this.lootTable = lootTable;
 		this.slots = slots;
+		this.probability = probability;
 		this.properties = new BooleanProperty[blocks.size()][];
 	}
 
@@ -66,6 +69,10 @@ public class LootStructureProcessor extends StructureProcessor {
 		final StructurePlacementData data) {
 
 		final var pos = currentBlockInfo.pos();
+		final var random = data.getRandom(pos);
+		if (random.nextFloat() > probability) {
+			return currentBlockInfo;
+		}
 
 		final var state = currentBlockInfo.state();
 		final var index = indexOf(state);
@@ -80,11 +87,10 @@ public class LootStructureProcessor extends StructureProcessor {
 		}
 		final var pair = optionalLootTable.get();
 
-		final var random = data.getRandom(currentBlockInfo.pos());
 		final var inventory = new SimpleInventory(slots);
 
 		final var context = pair.getRight()
-			.add(LootContextParameters.ORIGIN, currentBlockInfo.pos().toCenterPos());
+			.add(LootContextParameters.ORIGIN, pos.toCenterPos());
 
 		pair.getLeft().supplyInventory(inventory, context.build(LootContextTypes.CHEST), random.nextLong());
 
