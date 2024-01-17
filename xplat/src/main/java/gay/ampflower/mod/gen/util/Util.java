@@ -1,5 +1,6 @@
 package gay.ampflower.mod.gen.util;
 
+import com.mojang.datafixers.util.Either;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.loot.LootDataType;
 import net.minecraft.loot.LootTable;
@@ -14,7 +15,11 @@ import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.stream.Collector;
 
 /**
  * @author Ampflower
@@ -45,6 +50,21 @@ public final class Util {
 
 		return lootManager.getElementOptional(LootDataType.LOOT_TABLES, lootTable)
 			.map(table -> new Pair<>(table, new LootContextParameterSet.Builder(serverWorld)));
+	}
+
+	public static <T> T unbox(Either<T, T> either) {
+		return either.map(Function.identity(), Function.identity());
+	}
+
+	public static <K, V, T, A, C> C map(Map<K, V> map, BiFunction<K, V, T> function, Collector<? super T, A, C> collector) {
+		final A a = collector.supplier().get();
+		final var accumulator = collector.accumulator();
+
+		for (final var entry : map.entrySet()) {
+			accumulator.accept(a, function.apply(entry.getKey(), entry.getValue()));
+		}
+
+		return collector.finisher().apply(a);
 	}
 
 	@NotNull

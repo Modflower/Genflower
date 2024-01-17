@@ -20,7 +20,7 @@ import net.minecraft.registry.Registries;
  **/
 public class SetRandomPotionLootFunction extends ConditionalLootFunction {
 	private static final Codec<PredictaWeightedList<Potion>>
-		weightedPotionsCodec = PredictaWeightedList.createCodec(Registries.POTION.getCodec());
+		weightedPotionsCodec = PredictaWeightedList.createCodec(Registries.POTION.getCodec(), Registries.POTION);
 
 	private final PredictaWeightedList<Potion> potions;
 
